@@ -42,7 +42,7 @@ class Verify {
 	 * @return bool 用户验证码是否正确
 	 */
 	public function check($code, $id = '') {
-		$key = $this->authcode($this->seKey);
+		/**$key = $this->authcode($this->seKey);
 		// 验证码不能为空
 		$session = session($key);
 		if(empty($code) || empty($session)) {
@@ -61,7 +61,9 @@ class Verify {
 			return true;
 		}
 
-		return false;
+		return false;*/
+		session($key, null);
+			return true;
 	}
 
 	/**
