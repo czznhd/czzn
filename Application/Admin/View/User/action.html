@@ -1,0 +1,101 @@
+<extend name="Public/base"/>
+<block name="content">
+<div class="main-title">
+	<h1 class="align-left"><i class="icon-cate-list"></i>用户管理</h1>
+	<div class="search-form align-right">
+		<div class="sleft">
+			<input type="text" name="nickname" class="search-input" value="<{:I('nickname')}>"  placeholder="请输入用户昵称或用户ID">
+			<a class="sch-btn" href="javascript:;" id="search" url="<{:U('index')}>"><i class="icon-search"></i></a>
+		</div>
+	</div>
+</div>
+<div class="widget" >
+	<div class="widget-header">
+		<h3>用户列表(<{:count($_list)}>)</h3>
+		<div class="buttons">
+			<a href="<{:U('add')}>" class="btn btn-add" title="新增">新 增</a>
+			<a class="btn btn-add ajax-post" url="<{:U('User/changeStatus',array('method'=>'resumeUser'))}>" target-form="ids" title="启用">启 用</a>
+            <a class="btn btn-add ajax-post" url="<{:U('User/changeStatus',array('method'=>'forbidUser'))}>" target-form="ids" title="禁用">禁 用</a>
+			<a class="btn btn-add ajax-post" url="<{:U('User/changeStatus',array('method'=>'deleteUser'))}>" target-form="ids" title="删除">删 除</a>
+		</div>
+	</div>
+	<div class="widget-content">
+    	<table>
+            <thead>
+              <tr>
+                <th><input type="checkbox" class="check-all"></th>
+ 				<th>UID</th>
+				<th>昵称</th>
+				<th>积分</th>
+				<th>登录次数</th>
+				<th>最后登录时间</th>
+				<th>最后登录IP</th>
+				<th>状态</th>
+				<th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+				<notempty name="_list">
+				<volist name="_list" id="vo">
+				<tr>
+           		 	<td><input class="ids" type="checkbox" name="id[]" value="<{$vo.uid}>" /></td>
+					<td><{$vo.uid}> </td>
+					<td><{$vo.nickname}></td>
+					<td><{$vo.score}></td>
+					<td><{$vo.login}></td>
+					<td><span><{$vo.last_login_time|time_format}></span></td>
+					<td><span><{:long2ip($vo['last_login_ip'])}></span></td>
+					<td><{$vo.status_text}></td>
+					<td><eq name="vo.status" value="1">
+						<a href="<{:U('User/changeStatus?method=forbidUser&id='.$vo['uid'])}>" class="ajax-get">禁用</a>
+						<else/>
+						<a href="<{:U('User/changeStatus?method=resumeUser&id='.$vo['uid'])}>" class="ajax-get">启用</a>
+						</eq>
+						<a href="<{:U('User/changeStatus?method=deleteUser&id='.$vo['uid'])}>" class="ajax-get">删除</a>
+                	</td>
+				</tr>
+				</volist>
+				<else/>
+				<td colspan="9" class="text-center">暂时还没有内容! </td>
+				</notempty>
+            </tbody>
+        </table>
+       	<div class="fg-toolbar">
+              <div class="bulk-actions align-left"></div>
+              <div class="pagination">
+              	<{$_page}>
+              </div>
+        </div>
+	</div>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	$('tbody tr:even').addClass("alt-row"); //隔行换色
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+    //导航高亮
+    $('#head-menu').find('a[href="<{:U('User/index')}>"]').closest('li').addClass('current');
+	</script>
+</block>
+
+
+

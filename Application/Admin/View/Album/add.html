@@ -1,0 +1,185 @@
+<extend name="Public/base"/>
+<block name="content">
+<div class="main-title"><h1><i class="icon-cate-list"></i>音乐(DJ)</h1></div>
+<div class="widget" >
+	<div class="widget-header">
+		<h3><{:isset($data['id'])?'编辑':'新增'}>专辑</h3>
+	</div>
+	<div class="widget-content">
+	<form class="form-horizontal" enctype="multipart/form-data" action="<{:U()}>" name="songs"  method="post">				
+		<fieldset>														
+	    <div class="control-group">		
+			<label class="control-label">专辑名称</label>
+			<div class="controls">
+				<input  type="text" name="name" class="input-large" value="<{$data.name|default=''}>" >
+				<p class="help-block">此项不能为空</p>
+			</div>	
+	    </div>		
+
+	    <div class="control-group">		
+			<label class="control-label Validform_label">所属类别</label>
+			<div class="controls">
+				<input type="text"  class="hidden"	name="type_name" value="<{$data.type_name|default='其他'}>">
+				</volist>
+				<select name="type_id">
+				<option value="<{$data.type_id|default='0'}>"><{$data.type_name|default='请选择类别'}></option>
+				<volist name=":get_music_find('AlbumType')" id="type">
+				<option value="<{$type.id}>" ><{$type.name}></option>
+				</volist>
+				</select>
+			</div>	
+	    </div>		
+	
+		<div class="control-group">	
+			<label class="control-label">所属曲风</label>
+			<div class="controls">
+				<input type="text"  class="hidden"	name="genre_name" value="<{$data.genre_name|default='其他'}>">
+				<select name="genre_id">
+				<option value="<{$data.genre_id|default='0'}>"><{$data.genre_name|default='请选择曲风'}></option>
+				<volist name=":get_music_find('Genre')" id="vo">
+				<option value="<{$vo.id}>" ><{$vo.name}></option>
+				</volist>
+				</select>
+			</div>	
+		</div>			
+
+		<div class="control-group">	
+			<label class="control-label">所属歌手</label>
+			<div class="controls">
+				<input type="text" class="hidden" id="singer-id" name="singer_id" value="<{$data.singer_id|default='0'}>">	
+				<input type="text" id="singer-name" name="singer_name" value="<{$data.singer_name|default='网络'}>">	
+				<span class="btn find-btn" id="find-singer">查找</span>
+				<select style="margin-left:10px" class="hidden sort" reg="Singer"></select>
+				<select style="margin-left:10px" class="hidden" id="singer-list"></select>
+				<span class="hidden find-load">数据加载中，请稍等..</span>	
+			</div>						
+		</div>	
+
+	    <div class="control-group">		
+			<label class="control-label">字母索引</label>
+			<div class="controls">
+				<input type="text"  size="2" name="sort" value="<{$data.sort|default=''}>">
+				<p class="help-block">填A~Z之间的字母，便于查找，不填表示其它！</p>
+	    	</div>	
+	    </div>			
+	
+	    <div class="control-group">		
+			<label class="control-label">专辑图片</label>						
+			<div class="controls img-btns">
+				<input class="input-large" type="text" name="album_pic"id="album_img" value="<{$data.album_pic|default=''}>">
+				<input type="file" id="upload_picture">
+				<if condition="$data.album_pic neq null">
+				<span class="btn show-btn"  onclick="showImg('#album_img')">查看图片</span>
+				<else/>
+				<span class="btn show-btn" id="show_album_img" style="display:none" onclick="showImg('#album_img')">查看</span>
+				</if>
+			</div>
+	    </div>		
+	
+	    <div class="control-group">		
+			<label class="control-label ">点击次数</label>
+			<div class="controls">
+				<input type="text"  value="<{$data.hits|default=''}>" name="hits">
+			</div>	
+	    </div>			
+	
+		<div class="control-group">	
+			<label class="control-label">是否推荐</label>
+			<div class="controls">	
+				<input class="hidden" name="recommend" value="<{$data.recommend |default='0'}>">
+				<if condition="$data.recommend == 1">
+				<div  class="switch-wrapper">
+					<span class="switch-enable selected">是</span>
+					<span class="switch-disable">否</span>
+				</div>
+				<else/>
+				<div  class="switch-wrapper">
+					<span class="switch-enable">是</span>
+					<span class="switch-disable selected">否</span>	
+				</div>
+				</if>								
+			</div>	
+		</div>								
+	    <div class="control-group">		
+			<label class="control-label">唱片公司</label>
+			<div class="controls">	
+				<input type="text" class="input-large" name="company" value="<{$data.company|default=''}>">
+	    	</div>
+	    </div>		
+
+	    <div class="control-group">		
+			<label class="control-label">发行时间</label>
+			<div class="controls">	
+				<input type="text" name="pub_time" value="<{$data.pub_time|default=''}>">	
+				<p class="help-block">格式：2008-08-08</p>
+	    	</div>
+	    </div>								
+					
+	    <div class="control-group">		
+			<label class="control-label">专辑描述</label>
+			<div class="controls">	
+				<textarea name="description" style="width:300px;height:50px;" ><{$data.description|default=''}></textarea>
+	    	</div>
+	    </div>			 
+
+	    <div class="control-group">	
+			<label class="control-label">专辑简介</label>
+			<div class="controls">
+				<textarea name="introduce" style="width:300px;height:50px;"><{$data.introduce|default="暂无介绍"}></textarea>
+	    	</div>
+	    </div>										
+		<div class="form-actions">
+			<input type="hidden" name="id" value="<{$data.id|default=''}>">
+			<button class="btn button ajax-post" target-form="form-horizontal" type="submit">提交</button> <button class="btn" onclick="javascript:history.back(-1);return false;">取消</button>
+		</div>
+		</fieldset>
+	</form>
+	</div>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+<script type="text/javascript">
+	//上传图片
+	/* 初始化上传插件 */
+	$("#upload_picture").uploadify({
+		"height"          : 29,
+		"swf"             : "__STATIC__/uploadify/uploadify.swf",
+		"fileObjName"     : "download",
+		"buttonText"      : "上传图片",
+		"uploader"        : "<{:U('File/uploadPicture',array('session_id'=>session_id()))}>",
+		"width"           : 80,
+		'removeTimeout'	  : 1,
+		'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+		"onUploadSuccess" : uploadPicture
+	});
+	function uploadPicture(file, data){
+	
+		var data = $.parseJSON(data);
+		var src = '';
+		if(data.status){	
+			/*$.each( data, function(i, n){
+				alert( "Item #" + i + ": " + n );
+			});*/
+			src = data.url || '__ROOT__' + data.path;
+			$('#album_img').val(src);
+			$('#show_album_img').show();
+		} else {
+		topAlert(data.info);
+			setTimeout(function(){
+    			$('#info-alert').find('button').click();				       
+			},1500);
+		}
+	}
+	var findUrl="<{:U('Ajax/findData')}>";
+	$('#head-menu').find('a[href="<{:U('Songs/index')}>"]').closest('li').addClass('current');
+		//设置所选id对应的名称
+	$('.set-name').change(function () {
+		var nameVal = $(this).find('option:selected').html();
+		$(this).prev().val(nameVal);
+		alert(nameVal);
+	});
+</script>
+</block>	
+
+

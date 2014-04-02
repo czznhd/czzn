@@ -1,0 +1,34 @@
+<div class="def-block widget">	
+	<div class="widget-content">
+		<div class=" clearfix">
+			<ul class="tab-content-items">
+				<li class="grid_12">
+					<a href="javascript:;" class="m-thumbnail">
+						<img  alt="<{$data.nickname}>" src="<{$img|default='__IMG__/nopic.png'}>">
+					</a>
+					<h5><{$data.nickname}></h5>
+					<span>积分：<{$data.score}> </span>
+					<span>等级：10</span>
+				</li>									
+			</ul>			
+		</div>
+		<span class="liner"></span>
+	</div><!-- 小部件内容 -->
+	<div class="widget-content">
+		<span>注册时间：<{$data.reg_time|time_format='Y-m-d'}></span>
+	</div>
+</div><!-- def块部件标签 -->
+
+<div class="def-block widget">
+	<h4><i class="icon-edit"></i> 我的操作</h4><span class="liner"></span>
+	<div class="widget-content tags">
+		<ul class="list user-nav-list">
+			<li><a title="个人信息" href="<{:U('Index/index')}>"><i class="icon-user"></i> 个人信息 </a></li>
+			<li><a title="我的收藏" href="<{:U('Music/index')}>"><i class="icon-music"></i> 我的收藏 </a></li>
+			<li><a title="添加音乐" href="<{:U('Music/addmusic')}>"><i class="icon-upload-alt"></i> 添加音乐 </a></li>
+			<li><a title="我的下载" href="<{:U('Music/down')}>"><i class="icon-download-alt"></i> 我的下载 </a></li>
+			<li><a title="退出登陆" href="<{:U('Home/Member/logout')}>"><i class="icon-off"></i> 退出登陆 </a></li>
+		</ul>
+	</div><!-- widget content -->
+</div>
+			

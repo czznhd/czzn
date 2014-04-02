@@ -1,0 +1,60 @@
+			<div class="row row-fluid clearfix mbf ">
+				<div class="span3 sidebar">
+					<include file="Sidebar/leftNav"/>						
+				</div><!-- span4 侧边栏 -->
+				<div class="span6 posts">					
+					<div class="def-block">
+						<ul class="tabs">
+							<li><a href="<{:U('Music/index')}>">音乐收藏</a></li>
+							<li><a href="<{:U('Music/addmusic')}>">添加音乐</a></li>
+							<li><a href="<{:U('Music/addalbum')}>">专辑管理</a></li>		
+							<li><a href="<{:U('Music/down')}>">已下载的音乐</a></li>
+						</ul>
+						<ul class="tabs-content user-music-list scroll-mp3"  style="max-height: 380px; overflow: hidden;">
+						<switch name="type">
+							<case value="1">
+							<!-- 添加音乐 -->
+							<li class="active">								
+								<ul class="user-info">
+									功能未完善！
+								</ul>								
+							</li>							
+							</case>
+							<case value="2">
+							<!-- 专辑管理 -->
+							<li class="active">								
+								<ul class="user-info">
+									功能未完善！
+								</ul>								
+							</li>
+							</case>
+							<case value="3">
+							<!-- 已下载的音乐 -->
+							<li class="active">								
+								<ul class="user-info">
+									功能未完善！
+								</ul>								
+							</li>
+							</case>
+							<default />
+							<li class="active">					
+								<ul class="list">
+									<volist name='list' id='vo'>
+										<li>
+											<a target="_play" href="<{:U('home/play/'.$vo['id'])}>"><i class="icon-caret-right"></i><{$vo.name}></a>
+											<a data-id="<{$vo.id}>" href="javascript:;" class="del-fav" target="_blank">删除</a>
+										</li>
+									</volist>
+								</ul>
+							</li>
+						</switch>
+						</ul>
+					</div>				
+					
+				</div>
+				<!-- 侧边栏 -->
+				<div class="span3 sidebar">
+					<include file="Sidebar/Ads"/>
+					<include file="Sidebar/topMusic"/>						
+				</div><!-- span4 侧边栏 -->
+			</div><!-- 行清除浮动  -->

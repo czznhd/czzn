@@ -1,0 +1,91 @@
+<extend name="Base/common" />	
+<block name="content">
+	<div class="under_header"></div><!-- 在header之下  -->
+	<div class="page-content back_to_up">
+		<div class="row clearfix mb">
+			<!-- 导航标签-->
+			<div class="breadcrumbIn">
+				<ul>
+					<li><a href="<{:U('Index/index')}>" class="toptip" title="首页"> <i class="icon-home"></i> </a></li>
+					<li>用户注册</li>
+				</ul>
+			</div><!-- breadcrumb -->
+		</div><!-- row -->
+			<div class="row row-fluid clearfix mbf">
+			<div class="def-block clearfix">
+				<div class="grid_6 mtf">
+					<p><strong><{$config['WEB_TITLE']}> 服务条款（注册前必读）</strong></p>
+					<p>1.注册成为本站会员，必须遵守本站的《<{$config['WEB_TITLE']}> 服务条款》，如有违反，将删除ID，并限制该IP永不能在本站注册！<br>
+						2.遵守中国有关的法律和法规，不得为任何非法目的而使用网络服务系统，遵守所有与网络服务有关的网络协议、规定和程序<br>
+						3.为了有效的利用本站资源给广大DJ、网友服务，对超过三个月未登陆的用户，将删除该ID不另行通知！<br>
+						4.不能对其他会员随意谩骂，侮辱或进行人身攻击，请大家共同来维护<{$config['WEB_TITLE']}>，保持它的纯洁与文明<br>
+						5.不能在本站任何地方留有其他网站的网址，或进行任何不利于本站的行为！
+						</p>
+					<p>站长 QQ: <strong><{:C('WEB_QQ')}> </strong> <br> 站长邮箱: <strong><{:C('WEB_EMAIL')}></strong></p>
+				</div><!-- end grid6 -->
+
+				<div class="grid_6 mt">
+					<form method="post" id="userForm" class="ajax-form" action="__SELF__">
+						<div class="clearfix">
+							<label class="grid_12 alpha">用户名</label>
+							<div class="grid_6 alpha fll">								
+								<input type="text" class="grid_12 alpha" placeholder="请输入用户名"  errormsg="请填写6-16位用户名" nullmsg="请填写用户名" sucmsg="&nbsp" datatype="*6-16" value="" name="username"/>								
+							</div>
+							<span class="grid_5 omega fll"><div class="Validform_checktip"></div></span>
+						</div>	
+						<div class="clearfix">	
+							<label class="grid_12 alpha">密 码</label>
+							<div class="grid_6 alpha fll">								
+								<input type="password" class="grid_12 alpha" placeholder="请输入密码"  errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password"/>								
+							</div>
+							<span class="grid_5 omega fll"><div class="Validform_checktip"></div></span>
+						</div>	
+						<div class="clearfix">
+							<label class="grid_12 alpha">确认密码</label>	
+							<div class="grid_6 alpha fll">									
+								<input type="password" class="grid_12 alpha" placeholder="请再次输入密码" recheck="password" errormsg="您两次输入的密码不一致" nullmsg="请填确认密码" datatype="*" name="repassword"/>								
+							</div>
+							<span class="grid_5 omega fll"><div class="Validform_checktip"></div></span>
+						</div>	
+						<div class="clearfix">
+							<label class="grid_12 alpha">邮 箱</label>		
+							<div class="grid_6 alpha fll">		
+								<input type="text" class="grid_12 alpha"  placeholder="请输入电子邮件"  errormsg="请填写正确格式的邮箱" nullmsg="请填写邮箱" datatype="e" value="" name="email"/>								
+							</div>
+							<span class="grid_5 omega fll"><div class="Validform_checktip"></div></span>
+						</div>	
+						<div class="clearfix">		
+							<label class="grid_12 alpha">验证码</label>
+							<div class="grid_6 alpha fll">	
+								<input type="text" class="grid_12 alpha" placeholder="请输入验证码"  errormsg="请填写5位验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify"/>
+							</div>
+							<span class="grid_5 omega fll"><div class="Validform_checktip"></div></span>
+						</div>	
+						<div class="clearfix">		
+							<div class="grid_6 alpha fll">
+                				<img class="verifyimg reloadverify" alt="点击切换" src="<{:U('verify')}>" style="cursor:pointer;">
+           					</div>
+						</div>						
+						<input type="submit" id="sendMessage" style="float:left" name="sendMessage" value="注 册" />											
+						<span class="submit-info">  </span>
+					</form><!-- end form -->
+				</div><!-- end grid6 -->
+			</div><!-- def block -->	
+		</div><!-- 行清除浮动  -->
+
+	</div><!-- 结束页面内容 -->
+</block>
+<block name="script">
+	<script type="text/javascript" src="__STATIC__/Validform_v5.3.2_min.js"></script>
+	<script type="text/javascript">
+    	$(document)
+	    	.ajaxStart(function(){
+	    		$("button:submit").addClass("log-in").attr("disabled", true);
+	    	})
+	    	.ajaxStop(function(){
+	    		$("button:submit").removeClass("log-in").attr("disabled", false);
+	    	});
+
+		$("#userForm").Validform({tiptype:2});
+	</script>
+</block>

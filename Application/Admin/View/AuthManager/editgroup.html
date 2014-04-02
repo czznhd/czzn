@@ -1,0 +1,39 @@
+<extend name="Public/base" />
+<block name="content">
+<div class="main-title"><h1><i class="icon-cate-list"></i><{$meta_title}></h1></div>
+<div class="widget" >
+	<div class="widget-header">
+		<h3><{$auth_group['id']?'编辑':'新增'}>用户组</h3>
+	</div>
+	<div class="widget-content">
+	<form action="<{:U('AuthManager/writeGroup')}>" enctype="application/x-www-form-urlencoded" method="POST" 
+    class="form-horizontal">
+		<fieldset>	
+		<div class="control-group">
+    		<label for="auth-title" class="control-label">用户组</label>
+    		<div class="controls">
+        		<input id="auth-title" type="text" name="title" class="text input-large" value="<{$auth_group.title}>"/>
+   				</div>
+		</div>
+		<div class="control-group">
+   			<label for="auth-description" class="control-label">描述</label>
+    		<div class="controls">
+        		<textarea id="auth-description" type="text" name="description"><{$auth_group.description}></textarea>
+    		</div>
+		</div>
+		<div class="form-actions">
+   			<input type="hidden" name="id" value="<{$auth_group.id}>" />
+			<button class="btn button ajax-post" target-form="form-horizontal" type="submit">提交</button> 
+			<button class="btn" onclick="javascript:history.back(-1);return false;">取消</button>
+		</div>
+		</fieldset>	
+	</form>
+	</div>
+</div>
+<block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+    //导航高亮
+$('.side-sub-menu').find('a[href="<{:U('AuthManager/index')}>"]').closest('li').addClass('current');
+</script>
+</block>

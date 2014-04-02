@@ -1,0 +1,13 @@
+<div class="def-block widget">
+					<h4>专辑分类</h4><span class="liner"></span>
+					<div class="row-fluid the-icons type-list">
+						<div class="span3"><a href="<{:U('Album/index')}>" class="type-cur" title="全部专辑"><i class="icon-caret-right"></i>全部专辑</a></div>
+						<Gq:music name="albumType" order="add_time">
+						<if condition="$id eq $type['id'] ">
+						<div class="span3"><a href="<{$url}>" class="type-cur" title="<{$name}>"><i class="icon-caret-right"></i><{$name}></a></div>		
+						<else /> 
+						<div class="span3"><a href="<{$url}>" class="#" title="<{$name}>"><i class="icon-caret-right"></i><{$name}></a></div>
+						</if>
+					</Gq:music>
+					</div>
+				</div>

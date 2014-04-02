@@ -1,0 +1,8 @@
+<?php
+return array(
+	'INDEX_SONGS_CACHE_TIME'=>'86400',
+	'SIDEBAR_CACHE_TIME'=>'86400',
+	'HTML_CACHE_ON'=>0,
+	'HTML_CACHE_TIME'=>'86400',
+	'HTML_FILE_SUFFIX'=>'.html',
+);

@@ -1,0 +1,92 @@
+<extend name="Base/common" />
+<block name="content">
+	<div class="under_header"></div><!-- 在header之下  -->
+	<div class="page-content back_to_up">
+		<div class="row clearfix mb">
+			<!-- 导航标签-->
+			<div class="breadcrumbIn">
+				<ul>
+					<li><a href="index.html" class="toptip" title="首页"> <i class="icon-home"></i> </a></li>
+					<li>播放页面</li>
+					<li><{$m.name}> </li>
+				</ul>
+			</div><!-- breadcrumb -->
+		</div><!-- row -->
+		<div class="row row-fluid clearfix mbf">
+			<div class="span8 posts">
+				<div class="def-block">
+					<div class="post row-fluid clearfix">
+						<div class="music-single mbf clearfix"></div><!-- Player -->
+						<p>
+							<span> 所属专辑: </span>
+							<a target="_blank" href="<{$m.album_url}>"><{$m.album_name}></a>
+						</p><!-- tags -->
+						<p>
+							<span> 所属曲风: </span>
+							<a target="_blank" href="<{$m.genre_url}>"><{$m.genre_name}></a>
+						</p><!-- tags -->
+						<div class="meta">
+							<span> <i class="icon-user mi"></i> <{$m.up_name|default='Admin'}> </span>
+							<span> <i class="icon-time mi"></i>上传时间：<{$m.add_time|time_format='Y-m-d'}> </span>
+						</div><!-- meta -->
+
+						<div class="like-post">
+							<div id="fb-root"></div>
+							<div data-send="false" class="fb-like"></div>
+						</div><!-- like -->
+					</div><!-- post -->
+
+				</div><!-- def block -->
+			</div>
+			<div class="span4 sidebar">
+				<include file="Sidebar/topMusic"/>
+				<include file="Sidebar/Ads"/>
+			</div><!-- span4 侧边栏 -->
+		</div><!-- 行清除浮动  -->
+	</div><!-- 结束页面内容 -->
+</block>
+<block name="script">	
+	<script type="text/javascript" src="__JS__/jquery.jplayer.js"></script>
+	<script type="text/javascript" src="__JS__/ttw-music-player-min.js"></script>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+	jQuery(document).ready(function ($) {
+		var checkPlay;
+		clearInterval(checkPlay);
+		$.ajax({ 
+			type: "POST",
+			url:'<{:U('Music/getData')}>',
+			data: {'id':<{$m.id}>},
+			dataType:'json',
+			success: function(data){
+				var myPlaylist = [{
+					mp3:data.music_url,
+					title:"<{$m.name}>",
+					artist:'<a href="<{$m.singer_url}>"> <{$m.singer_name|default="网络"}> </a>',
+					rating:'<{$m.rater/2}>',
+					buy:'<{$m.down_url}>',
+					price:'下载',
+					duration:'<{$m.album_name|time_format='Y-m-d'}>',
+					cover:'http://media-cache-ec0.pinimg.com/originals/07/c0/f2/07c0f287ad143ce3dac6177b2fb76fcc.jpg'
+				}]
+				//alert(addlist);
+				$('.music-single').ttwMusicPlayer(myPlaylist, {
+					currencySymbol:'',
+					buyText:'',
+					tracksToShow:3,
+					autoplay:true,
+					ratingCallback:function(index, playlistItem, rating){
+					//some logic to process the rating, perhaps through an ajax call
+					},
+					jPlayer:{
+						swfPath:'http://www.jplayer.org/2.1.0/js'
+					}
+				});
+				$.cookie('index_Play_status','pause',{expires: 7, path: '/'});
+			}
+		});
+	})
+	$(window).unload( function () {$.cookie('index_Play_status','play',{ path:'/'}); } );
+	/* ]]>*/
+	</script>
+</block>

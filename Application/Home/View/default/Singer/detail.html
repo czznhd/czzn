@@ -1,0 +1,92 @@
+<extend name="Base/common" />
+<block name="content">
+	<div class="under_header"></div><!-- 在header之下  -->
+	<div class="page-content left-sidebar back_to_up">
+		<div class="row clearfix mb">
+			<!-- 导航标签-->
+			<div class="breadcrumbIn">
+				<ul>
+					<li><a href="index.html" class="toptip" title="首页"> <i class="icon-home"></i> </a></li>
+					<li>歌手详细页面</li>
+					<li><{$data.name}></li>
+				</ul>
+			</div><!-- breadcrumb -->
+		</div><!-- row -->
+		<div class="row row-fluid clearfix mbf">
+			<div class="span8 posts">
+				<div class="def-block bot20">
+					<div class="tab-content-items row-fluid">
+						<div class="span5">
+							<img class="four-radius" src="<{$data.singer_pic}>" alt="<{$data.name}>"></div>
+							<div class="span7 singer-detail">
+								<h3><{$data.name}></h3>
+								<span>所属地区：<{$data.region}></span>
+								<span>所属类型：<a href="<{:U('Singer/type/'.$data['type_id'])}>"><{$data.type_name}></a></span>
+								<span>收录时间：<{$data.add_time|time_format='Y-m-d'}></span>
+								<span>浏览次数：<{$data.hits}></span>
+								<span>评分：<{$data.rater}></span>
+							</div><!-- span7 -->
+					</div><!-- def-block -->
+					<div class="clearfix mt">
+						<ul class="tt-toggle">
+							<li class="sub-toggle">
+								<div class="toggle-head">
+									<div class="toggle-head-sign"></div>
+									<p>歌手详细介绍</p>
+								</div>
+								<div class="toggle-content">
+									<{$data.introduce|default="暂无介绍"}>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="def-block">
+					<div class="row-fluid clearfix" >
+						<h4>[<{$data.name}>]的所有歌曲</h4><span class="liner"></span>
+						<notempty name="list">
+						<div class="music_btns grid_12">
+							<div class="sign-btn lefter "> <button id="selAll" class="tbutton color4 small"><span>全选</span></button> </div>
+							<div class="sign-btn"> <button id="palySelect"  url="<{:U('Play/box')}>"  class="tbutton small"><span>播放选中</span></a> </button></div>								
+							<div class="sign-btn"> <button id="addPlayList" url="<{:U('Play/box')}>"  class="tbutton small"><span>加入列表</span></button> </div>	
+						</div>
+						<div class="music-single clearfix">
+							<div class="music-list ttw-music-player" style="opacity: 1;">  
+								<div class="tracklist">        
+									<ol class="tracks"> 										
+										<volist name="list" id="vo">
+										<li class="track">
+											<span class="title choose">
+												<input type="checkbox" value="<{$vo.id}>"/>
+												<a target="_play" href="<{:U('play/'.$vo['id'])}>" ><{$vo.name}></a>
+											</span>
+											<span class="rating">
+												<span class="rating-level rating-bar on"></span>
+											</span>
+											<a target="_play" class="pla" href="<{:U('play/'.$vo['id'])}>">播放</a>
+											<a target="_blank" class="fav" href="javascript:;"  data-id="<{$vo['id']}>">收藏</a>
+											<a target="_blank" class="down" href="<{:U('Music/down?id='.$vo['id'])}>">下载</a>
+										</li>
+										</volist>
+									</ol>           
+								</div>    
+							</div>
+						</div>
+						<else/>
+						该歌手下暂时没有添加歌曲！
+						</notempty>
+					</div>
+					<div class="pagination-tt mtf clearfix page">
+						<{$_page}>
+					</div>
+				</div>
+				
+			</div><!-- span8 posts -->
+			<div class="span4 sidebar">
+				<include file="Sidebar/topMusic"/>
+				<include file="Sidebar/Ads"/>
+			</div><!-- span4 侧边栏 -->
+		</div><!-- 行清除浮动  -->
+	</div><!-- 结束页面内容 -->
+</block>

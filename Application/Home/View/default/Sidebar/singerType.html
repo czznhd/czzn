@@ -1,0 +1,13 @@
+<div class="def-block widget">
+				<h4>歌手分类</h4><span class="liner"></span>
+				<div class="row-fluid the-icons type-list">
+					<div class="span3"><a href="<{:U('Singer/index')}>" class="type-cur" title="全部歌手"><i class="icon-caret-right"></i>全部歌手</a></div>
+					<Gq:music name="singerType" order="id" sort="asc">
+					<if condition="$id eq $type['id'] ">
+					<div class="span3"><a href="<{$url}>" class="type-cur" title="<{$name}>"><i class="icon-caret-right"></i><{$name}></a></div>		
+					<else /> 
+					<div class="span3"><a href="<{$url}>" class="#" title="<{$name}>"><i class="icon-caret-right"></i><{$name}></a></div>
+					</if>
+					</Gq:music>
+				</div>
+			</div>

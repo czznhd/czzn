@@ -1,0 +1,41 @@
+<extend name="Public/base"/>
+<block name="content">	
+<div class="main-title"><h1><i class="icon-cate-list"></i>管理员设置</h1></div>
+<div class="widget" >
+	<div class="widget-content">
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="<{:U('updateNickname')}>">修改昵称</a></li>
+				<li ><a href="<{:U('updatePassword')}>">修改密码</a></li>
+			</ul>
+			<br>
+			<!-- 修改密码表单 -->
+    		<form action="<{:U('User/submitNickname')}>" method="post" class="form-horizontal" autocomplete="off">
+			<fieldset>	
+				<div class="tab-pane active" >	
+				<div class="tab-content">
+					<div class="control-group">	
+						<label class="control-label">密码</label>
+						<div class="controls">
+							<input type="password" name="password" class="text input-large"  autocomplete="off"/>
+							<p class="help-block">请输入密码</p>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">昵称</label>
+						<div class="controls">
+							<input type="text" name="nickname" class="text input-large" autocomplete="off" value="<{:get_username()}>"/>
+							<p class="help-block">请输入新昵称</p>
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn  button ajax-post" target-form="form-horizontal">确 认</button>
+						<button class="btn" onclick="javascript:history.back(-1);return false;">返 回</button>
+					</div>
+				</div>
+				</div>
+			</fieldset>
+			</form>
+		</div>
+	</div>
+</block>

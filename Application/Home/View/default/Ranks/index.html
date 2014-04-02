@@ -1,0 +1,20 @@
+<extend name="Base/common" />
+<block name="content"> <div class="under_header"></div><!-- 在header之下  -->
+	<div class="page-content back_to_up">
+		<div class="row clearfix mb">
+			<!-- 导航标签-->
+			<div class="breadcrumbIn">
+				<ul>
+					<li><a href="index.html" class="toptip" title="首页"> <i class="icon-home"></i> </a></li>
+					<li>音乐排行榜</li>
+					<li><{$title}></li>
+				</ul>
+			</div><!-- breadcrumb -->
+		</div><!-- row -->
+	<include file="content"/>
+	</div><!-- 结束页面内容 --></block>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			if('<{$index}>') $('.rank-tags').eq('<{$index}>').find('a').addClass('type-cur');
+		})
+	</script></block>

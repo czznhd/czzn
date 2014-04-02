@@ -1,0 +1,13 @@
+<div class="def-block widget">
+					<h4>曲风分类</h4><span class="liner"></span>
+					<div class="widget-content tags">
+						<a title="全部歌曲" class="tags-cur" href="<{:U('genre/index')}>"><i class="icon-tag"></i>全部歌曲 </a>
+						<foreach name="genre" item="vo" key="k">
+						<if condition="$k eq I('id') ">
+						<a title="<{$vo}>" class="tags-cur" href="<{:U('genre/type/'.$k)}>"><i class="icon-tag"></i> <{$vo}> </a>		
+						<else /> 
+						<a title="<{$vo}>" class="#" href="<{:U('genre/type/'.$k)}>"><i class="icon-tag"></i> <{$vo}> </a>
+						</if>
+						</foreach>
+					</div>
+				</div>

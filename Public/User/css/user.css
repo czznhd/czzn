@@ -1,0 +1,58 @@
+/** 
+ * 用户首页样式 
+ */
+.back_to_up {
+    margin: -240px 0 40px !important;
+}
+.def-block {
+	padding:20px;
+}
+.widget .user-nav-list li a {
+	border: 1px solid #202020;
+	font-size:14px;
+}
+
+.widget .user-nav-list li a:hover {
+	border: 1px solid #FF0078;
+    color: #FF0078;
+    text-decoration: none !important;
+}
+
+.tabs li a {
+    margin: 0 10px -1px 0;
+}
+
+.user-info .the-list li {
+	font-size:14px;
+	line-height:35px;
+}
+
+.user-info .the-list .grid_3 {
+	text-align:right;
+}
+
+.tabs-content .list li {
+	line-height: 32px;
+	font-size:13px;
+	position: relative;
+}
+.tabs-content .list a.del-fav{
+	background: none repeat scroll 0 0 rgba(57, 57, 57, 0.3);
+    border-radius: 2px;
+    color: #A0A0A0;
+    display: inline-block;
+    font-size: 10px;
+    height: 18px;
+    line-height: 18px;
+    margin-left: 10px;
+    padding: 0 10px;
+    position: absolute;
+    right: 15px;
+    text-align: center;
+    text-shadow: none;
+    top: 8px;
+}
+.tabs-content .list a.del-fav:hover {
+	background-color: #FF0078;
+	color: #FFF;
+}

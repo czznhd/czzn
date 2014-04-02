@@ -1,0 +1,93 @@
+<extend name="Public/base"/>
+<block name="content">
+<div class="main-title"><h1><i class="icon-cate-list"></i>音乐(DJ)</h1></div>
+<div class="widget" >
+	<div class="widget-header">
+		<h3><{$data['id']?'修改':'新增'}>导航</h3>
+	</div>
+	<div class="widget-content">
+	<form class="form-horizontal" enctype="multipart/form-data" action="<{:U()}>" name="songs"  method="post">				
+		<fieldset>														
+		<div class="control-group">	
+			<label class="control-label">导航名称</label>
+			<div class="controls">
+				<input  type="text" name="name" class="input-large" value="<{$data.name|default=''}>" >
+				<p class="help-block">此项不能为空</p>
+			</div>	
+	    </div>
+	    
+	   	<div class="control-group">	
+			<label class="control-label">导航简介</label>
+			<div class="controls">
+				<input  type="text" name="digest" class="input-large" value="<{$data.digest|default=''}>" >
+				<p class="help-block">导航名称下面简单摘要</p>
+			</div>	
+	    </div>	
+	    <div class="control-group">		
+			<label class="control-label">导航链接</label>
+			<div class="controls">	
+				<input  type="text" name="url" class="input-large" value="<{$data.url|default=''}>" >
+				<p class="help-block">用于调转的URL，支持带http://的URL</p>
+	    	</div>
+	    </div>											
+		<div class="control-group">	
+			<label class="control-label">导航排序</label>
+			<div class="controls">
+				<input  type="text" name="sort" class="input-min" value="<{$data.sort|default=''}>" >
+				<p class="help-block">导航显示顺序</p>
+			</div>	
+	    </div>
+	    <div class="control-group">
+			<label  class="control-label">新窗口打开</label>
+			<div class="controls">					
+				<input class="hidden" name="target" value="<{$data.target|default='0'}>">
+				<if condition="$data.target == 1">
+				<div  class="switch-wrapper">	
+					<span class="switch-enable selected">是</span>
+					<span class="switch-disable">否</span>
+				</div>								
+				<else/>
+				<div  class="switch-wrapper">
+					<span class="switch-enable">是</span>
+					<span class="switch-disable selected">否</span>
+				</div>
+				</if>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<label  class="control-label">显示导航</label>
+			<div class="controls">					
+				<input class="hidden" name="status" value="<{$data.status|default='1'}>">
+				<if condition="$data.status == 1">
+				<div  class="switch-wrapper">	
+					<span class="switch-enable selected">是</span>
+					<span class="switch-disable">否</span>
+				</div>								
+				<else/>
+				<div  class="switch-wrapper">
+					<span class="switch-enable">是</span>
+					<span class="switch-disable selected">否</span>
+				</div>
+				</if>
+			</div>
+		</div>
+				
+		<div class="form-actions">
+			<input type="hidden" name="id" value="<{$data.id|default=''}>">
+			<button class="btn button ajax-post" target-form="form-horizontal" type="submit">提交</button> 
+			<button class="btn" onclick="javascript:history.back(-1);return false;">取消</button>
+		</div>					
+		</fieldset>
+	</form>
+	</div>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	$('#head-menu').find('a[href="<{:U('Config/group')}>"]').closest('li').addClass('current');
+</script>
+</block>	
+
+

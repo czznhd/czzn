@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+
+<title>JYmusic管理平台-<{$meta_title}></title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="shortcut icon" type="image/x-icon" href="__ROOT__/Public/favicon.ico">
+<link href="__CSS__/base.css" rel="stylesheet" type="text/css" />
+<link href="__CSS__/style.css" rel="stylesheet" type="text/css" />
+<block name="style"></block>
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->    
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+<![endif]--><!--[if gte IE 9]><!-->
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+</head>
+<body class="sidebar-left chart">
+<!-- 顶部开始-->
+<div class="header"> 	
+	<span class="logo"><a href="./" class="logo-img">JYmusic音乐系统</a></span>
+	<!-- 顶部菜单-->
+	<div class="top-nav">	
+    	<ul id="head-menu" class="top-menu">               
+            <volist name="__MENU__.main" id="menu">
+                <li class="<{$menu.class|default=''}>"><a href="<{$menu.url|U}>"><{$menu.title}></a></li>
+            </volist>
+        </ul>
+    </div>
+    <!-- 用户栏开始-->
+	<div class="user-nav">							
+		<a href="#" class="dropdown-toggle ">管理设置<b class="caret"></b></a>						
+		<ul class="dropdown-menu hidden ">
+			<li><a href="<{:U('User/updateNickname')}>"><i class="icon-user"></i>帐户设置</a></li>
+			<li><a href="<{:U('User/updatePassword')}>"><i class="icon-lock"></i>修改密码 </a></li>
+			<li class="divider"></li>
+			<li><a href="<{:U('Public/logout')}>"><i class="icon-off"></i>安全退出</a></li>
+		</ul>				
+	</div>
+    <!-- 用户栏结束 --> 
+</div>
+<!-- 顶部结束-->
+
+<!-- 侧边栏菜单 --> 
+<div id="sidebar">	 		
+	<div class="account-container">				
+		<div class="account-avatar">
+			<img class="thumbnail" alt="" src="__IMG__/avatar.png">
+		</div> <!-- /account-avatar -->				
+		<div class="account-details">					
+			<span class="account-name">Admin</span>					
+			<span class="account-role">超级管理员</span>					
+			<span class="account-actions">
+				<a href="javascript:;">属性</a> |	
+				<a href="javascript:;">编辑设置</a>
+			</span>				
+		</div> <!-- /account-details -->			
+	</div> <!-- /account-container -->				
+	<hr>
+	<block name="sidebar-nav">
+	<ul class="nav nav-tabs nav-stacked" id="main-nav">
+		<volist name="__MENU__.child" id="sub_menu">
+		<!-- 子导航 -->
+ 			<notempty name="sub_menu">
+ 			<li class="sub-menu">
+ 				<notempty name="key">								
+ 				<a class="active" href="javascript:;"><i class="icon-dropdown open"></i><{$key}></a>
+				</notempty>
+     			<ul class="subMenu">
+     			<volist name="sub_menu" id="menu">
+        			<li><a class="item" href="<{$menu.url|U}>"><i class="icon-lis"></i><{$menu.title}></a></li>
+        		</volist> 
+        		</ul>    
+			</notempty><!-- /子导航 -->
+			</li>
+		</volist>
+	</ul>					
+</block>
+</div> 
+<!-- 主体内容-->
+<div id="main-content">	
+	<div class="alert alert-error" id="info-alert" style="display: none;">
+		<button data-dismiss="alert" class="close">×</button>
+		<p class="alert-content">提示信息！</p>
+	</div>
+    <div class="content-box">
+		<block name="content"></block>		
+	</div>
+</div>
+<!-- 主体结束-->
+<!-- 底部 --> 
+<div id="footer">	
+	<div class="container">				
+		<hr>
+		<p>&copy; 2014 &nbsp;<a href="http://www.jyuu.cn">JYmusic</a>&nbsp;战神~~巴蒂版权所有</p>
+	</div> 	
+</div>
+ <script type="text/javascript">
+    (function(){
+        var ThinkPHP = window.Think = {
+            "ROOT"   : "__ROOT__", //当前网站地址
+            "APP"    : "__APP__", //当前项目地址
+            "PUBLIC" : "__PUBLIC__", //项目公共目录地址
+            "DEEP"   : "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
+            "MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+            "VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+        }
+    })();
+</script>
+<script type="text/javascript" src="__STATIC__/tinybox.js"></script>
+<script type="text/javascript" src="__JS__/functions.js"></script> 
+<!--script type="text/javascript" src="__JS__/common.js"></script--> 
+<script type="text/javascript">
+    +function(){
+        var $window = $(window), $subnav = $("#main-nav"), url;
+        /* 左边菜单高亮 */
+        url = window.location.pathname + window.location.search;
+        url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+        $subnav.find("a[href='" + url + "']").addClass("active").find('i').addClass("icon-long-arrow-right"); 
+    }();
+</script>
+<block name="script"></block>	
+</body>
+</html>

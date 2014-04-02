@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9" xmlns="http://www.w3.org/1999/xhtml" lang="zh"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<!--<![endif]-->
+<head>
+	<include file="Public/head"/></head>
+<body id="fluidGridSystem">
+	<div id="layout" class="full">
+	<!-- 头部 -->
+	<block name="header"><include file="Public/header"/></block>
+	<!-- /头部 -->	
+	<!-- 主体 -->
+	<block name="content"></block>
+	<!-- /主体 -->
+	<!-- 底部 -->
+	<include file="Public/footer"/>   <!-- /底部 -->
+	</div><!-- 结束布局 -->
+	<include file="Public/var"/>
+	<script type="text/javascript" src="__STATIC__/theme20.js"></script>
+	<script type="text/javascript" src="__STATIC__/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="__STATIC__/jquery.nicescroll.min.js"></script>
+	<script type="text/javascript" src="__JS__/common.js"></script>
+	<block name="script"></block> <!-- 用于加载js代码 -->
+	<div class="hidden"><!-- 用于加载统计代码等隐藏元素 -->
+		<block name="hidden"></block>
+	</div>
+</body>
+</html>

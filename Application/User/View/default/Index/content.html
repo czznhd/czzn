@@ -1,0 +1,55 @@
+			<div class="row row-fluid clearfix mbf ">
+				<div class="span3 sidebar">
+					<include file="Sidebar/leftNav"/>						
+				</div><!-- span4 侧边栏 -->
+				<div class="span6 posts">
+					<div class="def-block">
+						<ul class="tabs">
+							<li><a class="active" href="#Info">个人信息</a></li>
+							<li><a href="#Password" class="">修改密码</a></li>
+							<li><a href="#Userimg" class="">修改头像</a></li>
+						</ul>
+
+						<ul class="tabs-content the-list">
+							<li class="active user-info" id="Info">					
+								<ul class="the-list">
+									<li><span class="grid_3">用户名：</span><span class="grid_9"><{$data.nickname}></span></li>
+									<li><span class="grid_3">用户积分：</span><span class="grid_9"><{$data.nickname}></span></li>
+									<li><span class="grid_3">用户等级：</span><span class="grid_9"><{$data.nickname}></span></li>
+									<li><span class="grid_3">所属用户组：</span><span class="grid_9"><{$data.nickname}></span></li>
+									<li><span class="grid_3">用户邮箱：</span><span class="grid_9">378020023@QQ.com</span></li>
+									<li><span class="grid_3">注册时间：</span><span class="grid_9"><{$data.reg_time|time_format='Y-m-d H:i:s'}></span></li>
+									<li><span class="grid_3">上次登录：</span><span class="grid_9"><{$data.last_login_time|time_format='Y-m-d H:i:s'}></span></li>
+									<li><span class="grid_3">上次登录IP：</span><span class="grid_9"><{$data.last_login_ip}></span></li>
+								</ul>
+							</li>
+							
+							<li id="Password">								
+								<ul class="user-info">
+									<form id="popup_login_form" action="<{:U('Index/submitPassword')}>" method="post">
+										<li><input type="password" name="old"  value="" placeholder="输入旧密码"></li>
+										<li><input type="password" name="password"  value="" placeholder="输入新密码"></li>
+										<li><input type="password" name="repassword" value="" placeholder="确认新密码"></li>					
+										<li><input type="submit" class="login-btn tbutton fll" value=" 确认修改 "/></li>							
+										<span class="submit-info">  </span>
+									</form>
+								</ul>
+								
+							</li>
+							
+							<li id="Userimg">								
+								<ul class="user-info">
+									<li>功能未完善！！</li>
+								</ul>
+								
+							</li>
+						</ul>
+					</div>				
+					
+				</div>
+				<!-- 侧边栏 -->
+				<div class="span3 sidebar">
+					<include file="Sidebar/Ads"/>
+					<include file="Sidebar/topMusic"/>						
+				</div><!-- span4 侧边栏 -->
+			</div><!-- 行清除浮动  -->

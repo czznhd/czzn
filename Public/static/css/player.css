@@ -1,0 +1,158 @@
+/*连播播放器*/
+.jp-audio {
+	height:160px;
+    position: relative;
+}
+.jp-controls .jp-play, .jp-controls .jp-pause ,.jp-controls .jp-previous,.jp-controls .jp-next{
+    display: block;
+    height: 55px;
+    left: 68px;
+    position: absolute;
+    top: 66px;
+    width: 55px;
+}
+.jp-pause i{
+	font-size: 36px !important;
+}
+.jp-play i{
+	font-size: 40px !important;
+}
+#jp_interface_1 li a i:hover, .jp-playlist-current {
+	color:#ff0078;
+}
+
+.jp-controls .jp-previous {;
+    left: 20px;
+    top: 85px;
+    font-size: 15px;
+}
+.jp-controls .jp-next {
+    left: 150px;
+    top: 85px;
+    font-size: 15px;
+
+}
+.jp-previous .dropcap-border, .jp-next .dropcap-border{
+	line-height: 22px;
+	font-size: 15px;
+	padding: 0 8px;
+}
+.dropcap-border {
+	color: #fff;
+    border: 3px solid #fff;
+}
+.dropcap-border:hover {
+    border-color:#ff0078;
+}
+.jp-shuffle, .jp-shuffle-off,.jy-repeat-one, .jp-repeat, .jp-repeat-off, .jy-repeat-one, .repeat-one-off{	    
+    position: absolute;
+    left: 366px;
+    top: 115px;
+	font-size: 14px;
+}
+
+.jp-repeat-off, .jp-repeat{	    
+    left: 342px;
+}
+.jy-repeat-one, .repeat-one-off{
+	left: 316px;
+}
+.jp-repeat-off, .jp-shuffle, .jp-shuffle-off , .jy-repeat-one{	    
+    color:#ff0078;
+}
+.jy-repeat-one{
+	display:none;
+}
+
+.jp-controls .jp-mute, .jp-controls .jp-unmute, .jp-controls .jp-volume-max{
+	position: absolute;
+	top: 115px;
+	right: 122px;
+	width:28px;
+	font-size:16px;
+}
+.jp-controls .jp-volume-max{
+	right: 23px;
+}
+.ttw-music-player .jp-progress {
+    left: 200px;
+    overflow: hidden;
+    position: absolute;
+    margin: 0;
+    top: 100px;
+    width: 400px;    
+}
+
+div.jp-volume-bar {
+	right: 62px;
+    top: 125px;
+    cursor: pointer;
+    height: 6px;
+    overflow: hidden;
+    position: absolute;
+    width: 60px;
+    border-radius: 2px;
+    background: url("../images/player/player-progress.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+}
+div.jp-volume-bar-value {
+    background-color:#ff0078;
+    height: 6px;
+    width: 0;
+}
+
+.jp-playlist{
+	list-style-position: inside;
+}
+
+
+#play-box .play-title {
+    color: #FFFFFF;
+    font-size: 16px;
+    left: 200px;
+    position: absolute;
+    top: 65px;
+}
+#play-box .jp-current-time{
+	left: 200px;
+	bottom:20px;
+	font-size:13px;
+}
+
+#play-box .tabs li a {
+	font-size: 12px;
+}
+#play-box .tracklist {
+    margin-top: 0;
+}
+
+#play-box .tracks li a{
+	font-size: 12px;
+}
+#play-box .ez-checkbox{
+	position: absolute;
+	top:5px;
+	left:2px
+}
+.jp-playlist-item{
+	display: block;
+	width:500px;
+	margin-left: 22px;
+}
+.jp-playlist-current .icon-play-circle, .jp-playlist-item:hover .icon-play-circle{	
+	display: block;
+}
+
+.jyplay-fav, .jyplay-down, .jyplay-del{
+	position: absolute;
+	top:5px;
+	right:5px;
+    font-size: 15px !important;
+}
+
+.jyplay-down {
+	right:25px;
+}
+
+.jyplay-fav {
+	right:45px;
+}

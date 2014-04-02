@@ -1,0 +1,63 @@
+			<div class="row clearfix mb">
+				<div class="Alphabet">
+					<ul>
+						<li><a href="<{:U('Singer/index')}>"> 浏览所有 </a></li>
+						<li><a href="#"> A </a></li>
+						<li><a href="#"> B </a></li>
+						<li><a href="#"> C </a></li>
+						<li><a href="#"> D </a></li>
+						<li><a href="#"> E </a></li>
+						<li><a href="#"> F </a></li>
+						<li><a href="#"> G </a></li>
+						<li><a href="#"> H </a></li>
+						<li><a href="#"> I </a></li>
+						<li><a href="#"> J </a></li>
+						<li><a href="#"> K </a></li>
+						<li><a href="#"> L </a></li>
+						<li><a href="#"> M </a></li>
+						<li><a href="#"> N </a></li>
+						<li><a href="#"> O </a></li>
+						<li><a href="#"> P </a></li>
+						<li><a href="#"> Q </a></li>
+						<li><a href="#"> R </a></li>
+						<li><a href="#"> S </a></li>
+						<li><a href="#"> T </a></li>
+						<li><a href="#"> U </a></li>
+						<li><a href="#"> V </a></li>
+						<li><a href="#"> W </a></li>
+						<li><a href="#"> X </a></li>
+						<li><a href="#"> Y </a></li>
+						<li><a href="#"> Z </a></li>
+						<li><a href="#"> 0-9 </a></li>
+						<li><a href="#"> 其他歌手 </a></li>
+					</ul>
+				</div><!-- breadcrumb -->
+			</div><!-- row -->		
+		
+		<div class="row row-fluid clearfix mbf">
+			<div class="span8 posts">
+				<div class="def-block">
+					<h4><i class="icon-list"></i> <{$title}></h4><span class="liner"></span>
+					<div class="clearfix">
+						<div class="mp3-albums">
+							<volist name="list" id="vo">
+							<a class="grid_3 singer-img" href="<{:U('Singer/'.$vo['id'])}>">
+								<img alt="<{$vo.name}>"  src="<{$vo.singer_pic}>">
+								<span>
+									<strong><{$vo.name}></strong>
+									<{$vo.add_time|time_format='Y-m-d'}>
+								</span>
+							</a>
+							</volist>
+						</div>
+					</div>
+					<div class="pagination-tt mtf clearfix page">
+						<{$_page}>
+					</div>
+				</div><!-- def block -->
+			</div><!-- span8 posts -->
+			<div class="span4 sidebar">
+				<include file="Sidebar/singerType"/>
+				<include file="Sidebar/Ads"/>
+			</div><!-- span4 侧边栏 -->
+		</div><!-- 行清除浮动  -->

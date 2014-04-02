@@ -1,0 +1,39 @@
+		<div class="row row-fluid clearfix mbf">
+			<div class="span3 sidebar">
+				<include file="Sidebar/ranks"/>
+				<include file="Sidebar/Ads"/>
+			</div><!-- span3 侧边栏 -->
+			<div class="span9 posts">
+				<div class="def-block">
+					<div class="row-fluid clearfix" >
+						<h4><i class="icon-list"></i> <{$title}></h4><span class="liner"></span>					
+						<notempty name="list">
+						<div class="music_btns grid_12">
+							<div class="sign-btn"> <a href="#" id="addPlayList" class="tbutton small"><span>加入列表</span></a> </div>
+							<div class="sign-btn"> <a href="#" id="palySelect" class="tbutton small"><span>播放选中</span></a> </div>
+							<div class="sign-btn lefter "> <a href="#" id="selAll" class="tbutton color4 small"><span>全选</span></a> </div>
+						</div>
+						<div class="tabs-content music-single ">
+							<div class="row-fluid the-icons">
+								<div class="ttw-music-player ranks-list">
+								<ul class="tracklist">  										
+									<volist name="list" id="vo">
+									<li class="grid_6 track">	
+										<input type="checkbox" value="<{$vo['id']}>">								
+										<a target="_play" class="lefter" href="<{:U('play/'.$vo['id'])}>"><{$vo.name}>  <if condition="$vo.recommend eq 1"><i class="icon-thumbs-up"></i></if></a>
+									</li>
+									</volist>         
+								</ul> 
+								</div>
+							</div>    
+						</div>
+						<else/>
+						暂时没有添加歌曲！
+						</notempty>
+					</div>
+					<div class="pagination-tt mtf clearfix page">
+						<{$_page}>
+					</div>
+				</div><!-- def block -->
+			</div><!-- span8 posts -->		
+		</div><!-- 行清除浮动  -->

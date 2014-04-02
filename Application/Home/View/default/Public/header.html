@@ -1,0 +1,65 @@
+<header id="header" class="glue">
+		<div class="row clearfix">
+			<div class="little-head">				
+				<!-- 弹出登录 -->
+				<div id="popupLogin">		
+					<div class="def-block widget">
+					<h4>用户登录</h4><span class="liner"></span>
+						<div class="widget-content row-fluid">
+							<form id="popup_login_form" class="ajax-form" action="<{:U('Member/login')}>" method="post">
+							<input type="text" name="username" id="login_username" onfocus="if (this.value=='用户名') this.value = '';" onblur="if (this.value=='') this.value = '用户名';" value="用户名" placeholder="用户名">
+							<input type="password" name="password" id="login_password" onfocus="if (this.value=='密码') this.value = '';" onblur="if (this.value=='') this.value = '密码';" value="密码" placeholder="密码">
+							<input type="text"  name="verify" id="login_verify" onfocus="if (this.value=='验证码') this.value = '';" onblur="if (this.value=='') this.value = '验证码';" value="验证码" placeholder="请输入验证码">
+							<img class="verifyimg reloadverify" id="login_verify_img" alt="点击切换"  title="点击切换" src="<{:U('Member/verify')}>" style="cursor:pointer;">
+							<input type="submit" class="login-btn tbutton fll" value="登录"/>
+							<a href="<{:U('Member/register')}>" class="login-btn reg-btn tbutton color2 fll">注册</a>
+							<span class="submit-info">  </span>
+							</form><!-- 用户登录 -->
+						</div><!-- 内容 -->
+					</div><!-- 窗口小部件 -->
+					<div id="popupLoginClose"><i class="icon-remove"></i></div>		
+				</div><!-- 弹出登录 -->
+				<ul class="sf-menu" id="user-info" style="display:none">
+					<li class="selectedLava">
+						<a href="javascript:void(0);" id="user-name"><span class="sf-sub-indicator"><i class="icon-angle-down"></i></span></a>												
+						<ul style="display: none; visibility: hidden;" class="tipsy-inner tipsy-nt">							
+							<div class="tipsy-arrow"></div>
+							<li class="xpopdrop"><a href="<{:U('User/Index/index')}>" target="_blank">用户中心</a></li>
+							<li class="xpopdrop"><a href="<{:U('Member/logout')}>">安全退出</a></li>
+						</ul>
+					</li>
+				</ul>					
+				<div id="LoginBackgroundPopup" style="display:none"></div>
+				<!-- 弹出登录 -->
+				<div id="Login_PopUp_Link" class="sign-btn tbutton small">
+					<span>注册/登录</span>
+				</div>											
+				<div class="social-head">
+                  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+					<!--script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script-->
+				</div><!-- 结束 社交媒体 -->
+
+				<div class="search">
+					<form action="<{:U('Search/index')}>" id="search" method="get"  target="_blank">
+						<input id="inputhead" name="key" type="text" onfocus="if (this.value=='开始搜索...') this.value = '';" onblur="if (this.value=='') this.value = '开始搜索...';" value="开始搜索..." placeholder="开始搜索 ...">
+						<button type="submit"><i class="icon-search"></i></button>
+					</form><!-- 结束 表格 -->
+				</div><!-- 搜索 -->
+			</div><!-- little head -->
+		</div><!-- 行 -->
+
+		<div class="headdown">
+			<div class="row clearfix">
+				<div class="logo bottomtip" title="最好和最流行的音乐">
+					<a href="#"><img src="__IMG__/logo.png" alt="最好和最流行的音乐"></a>
+				</div><!-- 结束 logo -->
+				<nav>
+					<ul class="sf-menu">
+						<Gq:nav name='nav'>
+						<li><a href="<{$nav.url|get_nav_url}>" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>"><{$nav.name}><span class="sub"><{$nav.digest}></span></a></li>
+						</Gq:nav>
+					</ul><!-- 结束菜单 -->
+				</nav><!-- 结束导航 -->
+			</div>
+		</div><!-- 头下 -->
+	</header>

@@ -1,0 +1,18 @@
+<extend name="Base/common" />
+<block name="content">
+	<div class="under_header"><img alt="#" src="http://media-cache-ak0.pinimg.com/originals/f0/fe/f3/f0fef384bf3f1ca044b6c4f5129b4078.jpg"></div><!-- 在header之下  -->
+	<div class="page-content back_to_up">
+	<include file="content"/>
+	</div><!-- 结束页面内容 -->
+</block>
+<block name="script">	
+	<script type="text/javascript" src="__JS__/user.js"></script>	
+	<script type="text/javascript">
+		//导航高亮
+		if('<{$type}>') {
+			$('.tabs li').eq('<{$type}>').find('a').addClass('active');
+		}else{
+			$('.tabs li:first').find('a').addClass('active');
+		}
+	</script>
+</block>

@@ -1,0 +1,19 @@
+<div class="def-block widget">
+				<h4>最新上传专辑</h4><span class="liner"></span>
+				<div class="widget-content row-fluid">
+					<div class="scroll-mp3" style="height: 320px;">
+						<div class="content">
+						<ul class="tab-content-items">
+						<Gq:music name="album" limit="20" order="id">
+						<li class="clearfix">
+							<a class="m-thumbnail" href="<{$url}>"><img width="50" height="50" src="<{$album_pic}>" alt="<{$name}>"></a>
+							<h3><a href="<{$url}>"><{$name}></a></h3>
+							<span> <{$singer_name|default='网络'}> </span>
+							<span><{$hits}> </span>
+						</li>
+						</Gq:music>
+						</ul>
+						</div>
+					</div>
+				</div>
+			</div>

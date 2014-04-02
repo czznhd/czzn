@@ -1,0 +1,43 @@
+<extend name="Public/base"/>
+<block name="content">
+<div class="main-title"><h1><i class="icon-cate-list"></i>音乐(DJ)</h1></div>
+<div class="widget" >
+	<div class="widget-header">
+		<h3><{:isset($data['id'])?'编辑':'新增'}>歌手类型</h3>
+	</div>
+	<div class="widget-content">
+	<form class="form-horizontal" enctype="multipart/form-data" action="<{:U()}>" name="songs"  method="post">				
+		<fieldset>														
+		<div class="control-group">	
+			<label class="control-label">类型名称</label>
+			<div class="controls">
+				<input  type="text" name="name" class="input-large" value="<{$data.name|default=''}>" >
+				<p class="help-block">此项不能为空</p>
+			</div>	
+	    </div>											
+		
+	    <div class="control-group">		
+			<label class="control-label">类型描述</label>
+			<div class="controls">	
+				<textarea name="description" style="width:300px;height:50px;" ><{$data.description|default=''}></textarea>
+	    	</div>
+	    </div>			 
+										
+		<div class="form-actions">
+			<input type="hidden" name="id" value="<{$data.id|default=''}>">
+			<button class="btn button ajax-post" target-form="form-horizontal" type="submit">提交</button> 
+			<button class="btn" onclick="javascript:history.back(-1);return false;">取消</button>
+		</div>					
+		</fieldset>
+	</form>
+	</div>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	$('#head-menu').find('a[href="<{:U('Songs/index')}>"]').closest('li').addClass('current');
+</script>
+</block>	
+
+

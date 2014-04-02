@@ -1,0 +1,80 @@
+<extend name="Public/base"/>
+<block name="content">
+<div class="main-title"><h1><i class="icon-cate-list"></i>系统设置</h1></div>
+<div class="widget" >
+	<div class="widget-header">
+		<h3>网站设置</h3>
+	</div>
+	<div class="widget-content">
+		<div class="tabbable">
+			<ul class="nav nav-tabs">
+			   	<volist name="Think.config.CONFIG_GROUP_LIST" id="group">
+				<li <eq name="id" value="$key">class="active"</eq>><a href="<{:U('?id='.$key)}>"><{$group}>配置</a></li>
+				</volist>
+				<li><a href="<{:U('cache')}>">缓存静态</a></li>
+			</ul>			
+			<br>
+			<form class="form-horizontal" action="<{:U('save')}>"  method="post">
+			<fieldset>				
+			<volist name="list" id="config">				
+			<div class="control-group">											
+				<label class="control-label"><{$config.title}></label>
+				<div class="controls">
+					<switch name="config.type">
+					<case value="0">
+					<input type="text" class="input-min" name="config[<{$config.name}>]" value="<{$config.value}>">
+					</case>
+					<case value="1">
+					<input type="text" class="input-large" name="config[<{$config.name}>]" value="<{$config.value}>">
+					</case>
+					<case value="2">
+					<textarea name="config[<{$config.name}>]"><{$config.value}></textarea>
+					</case>
+					<case value="3">
+					<textarea name="config[<{$config.name}>]"><{$config.value}></textarea>
+					</case>
+					<case value="4">
+					<select name="config[<{$config.name}>]">
+					<volist name=":parse_config_attr($config['extra'])" id="vo">
+						<option value="<{$key}>" <eq name="config.value" value="$key">selected="selected"</eq>><{$vo}></option>
+					</volist>
+					</select>
+					</case>
+					<case value="5">
+					<input class="hidden" name="config[<{$config.name}>]" value="<{$config.value}>">  			
+					<if condition="$config['value'] == 1">
+					<div  class="switch-wrapper">
+						<span class="switch-enable selected">开启</span>
+						<span class="switch-disable">关闭</span>
+					</div>           						
+					<else/>
+					<div  class="switch-wrapper">
+						<span class="switch-enable">开启</span>
+						<span class="switch-disable selected">关闭</span>	
+					</div>
+					</if>
+					</case>
+					</switch>
+					<p class="help-block"><{$config.remark}></p>
+				</div> 				
+			</div> 
+			</volist>
+		</div>
+
+		<div class="form-actions">
+			<button class="btn button" type="submit">保存</button> 
+			<button class="btn" onclick="javascript:history.back(-1);return false;">取消</button>
+		</div>
+		</fieldset>
+		</form>
+	</div>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	$('#head-menu').find('a[href="<{:U('Config/index')}>"]').closest('li').addClass('current');
+</script>
+</block>	
+
+

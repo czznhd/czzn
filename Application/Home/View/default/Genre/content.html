@@ -1,0 +1,50 @@
+		<div class="row row-fluid clearfix mbf">
+			<div class="span3 sidebar">
+				<include file="Sidebar/genreTags"/>	
+				<include file="Sidebar/Ads"/>
+			</div><!-- span3 侧边栏 -->
+			<div class="span9 posts">
+				<div class="def-block">
+					<div class="row-fluid clearfix" >
+						<h4><i class="icon-list"></i> <{$title}></h4><span class="liner"></span>
+						<notempty name="list">
+						<div class="music_btns grid_12">							
+							<div class="sign-btn lefter "> <button id="selAll" class="tbutton color4 small"><span>全选</span></button> </div>
+							<div class="sign-btn"> <button id="palySelect"  url="<{:U('Play/box')}>"  class="tbutton small"><span>播放选中</span></a> </button></div>								
+							<div class="sign-btn"> <button id="addPlayList" url="<{:U('Play/box')}>"  class="tbutton small"><span>加入列表</span></button> </div>					
+						</div>
+						<div class="music-single clearfix">
+							<div class="full-list ttw-music-player" style="opacity: 1;">  
+								<div class="tracklist">        
+									<ol class="tracks"> 										
+										<volist name="list" id="vo">
+										<li class="track">
+											<span class="title choose">
+												<input type="checkbox" value="<{$vo.id}>"/>
+												<a target="_play" href="<{:U('Play/'.$vo['id'])}>" >
+													<{$vo.name}>  
+													<if condition="$vo.recommend eq 1"><i class="icon-thumbs-up"></i></if>
+												</a>
+											</span>
+											<span class="rating">
+												<span class="rating-level rating-bar on"></span>
+											</span>
+											<a target="_play" class="pla" href="<{:U('play/'.$vo['id'])}>">播放</a>
+											<a target="_blank" class="fav" href="javascript:;" data-id="<{$vo['id']}>">收藏</a>
+											<a target="_blank" class="down" href="<{:U('Music/down?id='.$vo['id'])}>">下载</a>
+										</li>
+										</volist>
+									</ol>           
+								</div>    
+							</div>
+						</div>
+						<else/>
+						该曲风下暂时没有添加歌曲！
+						</notempty>
+					</div>
+					<div class="pagination-tt mtf clearfix page">
+						<{$_page}>
+					</div>
+				</div><!-- def block -->
+			</div><!-- span9 posts -->		
+		</div><!-- 行清除浮动  -->

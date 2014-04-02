@@ -1,0 +1,59 @@
+<extend name="Public/base"/>
+<block name="content">
+<div class="main-title"><h1><i class="icon-cate-list"></i>音乐(DJ)</h1></div>
+<div class="widget" >
+	<div class="widget-header">
+		<h3>新增用户</h3>
+	</div>
+	<div class="widget-content">
+	<form class="form-horizontal"  action="<{:U()}>" method="post">				
+		<fieldset>														
+		<div class="control-group">	
+			<label class="control-label">用户名</label>
+			<div class="controls">
+				<input  type="text" name="username" class="input-large" value="" >
+				<p class="help-block">用户名会作为默认的昵称</p>
+			</div>	
+	    </div>		
+
+		
+		<div class="control-group">	
+			<label class="control-label">密码</label>
+			<div class="controls"> 							
+				<input type="password" class="input-large" name="password" value="">
+				<p class="help-block">用户密码不能少于6位</p>														
+			</div>	
+			
+		</div>					
+		
+	    <div class="control-group">		
+			<label class="control-label">确认密码</label>
+			<div class="controls">	
+				<input type="password" class="input-large" name="repassword" value="">
+	    	</div>
+	    </div>	
+	    <div class="control-group">	
+			<label class="control-label">邮箱</label>
+			<div class="controls">
+				 <input type="text" class="input-large" name="email" value="">
+				<p class="help-block">用户邮箱，用于找回密码等安全操作</p>
+			</div>	
+	    </div>			 
+										
+		<div class="form-actions">
+			<button class="btn button ajax-post" type="submit" target-form="form-horizontal">提交</button>
+			<button class="btn" onclick="javascript:history.back(-1);return false;">取消</button>
+		</div>					
+		</fieldset>
+	</form>
+	</div>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	    //导航高亮
+    $('#head-menu').find('a[href="<{:U('User/index')}>"]').closest('li').addClass('current');
+</script>
+</block>	
+
+

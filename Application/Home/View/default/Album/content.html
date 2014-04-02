@@ -1,0 +1,26 @@
+		<div class="row row-fluid clearfix mbf">
+			<div class="span8 posts">
+				<div class="def-block">
+					<h4><i class="icon-list"></i> <{$title}></h4><span class="liner"></span>
+					<div class="clearfix">
+						<ul class="tab-content-items" >
+							<volist name="list" id="vo">
+							<li class="grid_6">
+								<a class="m-thumbnail" href="<{:U('album/'.$vo['id'])}>"><img class="four-radius" src="<{$vo.album_pic}>" alt="<{$vo.name}>"></a>
+								<h3 class="news-title"> <a href="<{:U('album/'.$vo['id'])}>"><{$vo.name|msubstr=0,14}></a> </h3>
+								<span>上传时间：<{$vo.add_time|time_format='Y-m-d'}></span> 
+								<span>点击次数：<{$vo.hits}></span>
+							</li>
+							</volist>
+						</ul>
+					</div>
+					<div class="pagination-tt mtf clearfix page">
+						<{$_page}>
+					</div>
+				</div><!-- def block -->
+			</div><!-- span8 posts -->
+			<div class="span4 sidebar">
+				<include file="Sidebar/albumType"/>	
+				<include file="Sidebar/Ads"/>
+			</div><!-- span4 侧边栏 -->
+		</div><!-- 行清除浮动  -->

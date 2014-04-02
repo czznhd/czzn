@@ -1,0 +1,82 @@
+<extend name="Base/common" />
+<block name="style"><link rel="stylesheet" type="text/css" href="__STATIC__/css/player.css" id="dark" media="screen" /></block>
+<block name="content">
+	<div class="under_header"></div><!-- 在header之下  -->
+	<div class="page-content back_to_up">		
+		<div class="row row-fluid clearfix mbf">
+			<div class="span8 posts">
+				<div class="def-block">
+					<div class="music-single row-fluid clearfix">
+						<div id="play-box"  class="ttw-music-player lplayer" style="opacity: 1;">
+							<div id="jplayer"></div>
+							<div class="player jp-audio">
+								<!-- audio player begin -->
+								<h4><{:C('WEB_TITLE')}></h4><span class="liner"></span>
+								<div class="jp-type-single">
+                        			<div id="jp_interface_1" class="jp-interface">
+                        			<ul class="jp-controls">
+                        				<li><a href="javascript:;" class="jp-pause" title="暂停"><span class="dropcap-border circle-radius"><i class="icon-pause"></i></span></a></li>                        				
+                        				<li><a href="javascript:;" class="jp-play" title="播放"><span class="dropcap-border circle-radius"><i class="icon-play"></i></span></a></li>
+                        				<li><a href="javascript:;" class="jp-previous" title="上一曲"><span class="dropcap-border circle-radius"><i class="icon-step-backward"></i></span></a></li>
+                        				<li><a href="javascript:;" class="jp-next" title="下一曲"><span class="dropcap-border circle-radius"><i class="icon-step-forward"></i></span></a></li>                       				
+                        				<li><a href="javascript:;" class="jp-shuffle-off" title="顺序播放"><i class="icon-random"></i></a></li> 
+                        				<li><a href="javascript:;" class="jp-shuffle" title="随机播放"><i class="icon-indent-right"></i></a></li>
+                        				<li><a href="javascript:;" class="jy-repeat-one" title="单曲循环"><i class="icon-money"></i></a></li>
+                        				<li><a href="javascript:;" class="repeat-one-off" title="单曲循环"><i class="icon-money"></i></a></li>
+                        				<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="列表循环"><i class="icon-retweet"></i></a></li>
+                        				<li><a href="javascript:;" class="jp-repeat-off" title="关闭重复"><i class="icon-retweet"></i></a></li>
+                        				<li><a href="javascript:;" class="jp-mute"  title="静音"><i class="icon-volume-up""></i></a></li>
+                        				<li><a href="javascript:;" class="jp-unmute" title="取消静音"> <i class="icon-volume-off"></i></a></li>
+                        				<li><a href="javascript:;" class="jp-volume-max" title="最大音量"><i class="icon-h-sign"></i></a></li>
+                        			</ul>
+                        			<div class="jp-progress progress-wrapper">
+                        				<div class="progress jp-seek-bar">
+                        					<div class="elapsed jp-play-bar"></div>
+                        				</div>
+                        			</div>
+                        			<span class="jp-current-time"></span>
+                        			<div class="jp-volume-bar">
+										<div class="jp-volume-bar-value"></div>
+									</div>
+                        			<div class="play-title"><{:C('WEB_TITLE')}></div>
+                        			</div>
+                        		</div>
+                        		<!-- audio player end -->
+							</div>
+							<ul class="tabs">
+								<li><a class="active" href="#t-play">默认列表</a></li>
+								<li><a href="#t-fav">音乐收藏</a></li>
+							</ul>
+							<ul class="tracks tabs-content">
+								<li id="t-play" class="active">
+									<div class="tracklist jp-playlist scroll-mp3"  style="max-height: 380px; overflow: hidden;"><ul class="tracks"></ul></div>
+								</li>
+								<li id="t-fav">
+									<div class="tracklist">								
+									<ul class="tracks">
+										<li class="track">收藏夹</li>
+									</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div><!-- post -->				
+				</div><!-- def block -->
+			</div><!-- span8 posts -->
+			<div class="span4 sidebar">
+				<include file="Sidebar/topMusic"/>
+				<include file="Sidebar/Ads"/>
+			</div><!-- span4 侧边栏 -->
+		</div><!-- row clearfix -->
+	</div><!-- 结束页面内容 -->
+</block>
+<block name="script">	
+	<script type="text/javascript" src="__JS__/jquery.jplayer.js"></script>
+	<script type="text/javascript" src="__JS__/jplayer.playlist.min.js"></script>
+	<script type="text/javascript" src="__JS__/music/playlists.js"></script>
+	<script type="text/javascript">
+	/* <![CDATA[ */	
+	$(window).unload( function () { $.cookie('window_Play',null,{ path: '/'});$.cookie('index_Play_status','play',{ path:'/'}); } );
+	/* ]]>*/
+	</script>
+</block>

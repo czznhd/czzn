@@ -1,0 +1,41 @@
+<extend name="Base/common" />
+<block name="style"><link rel="stylesheet" type="text/css" href="__STATIC__/css/player.css" id="dark" media="screen" /></block>
+<block name="content"><div class="under_header"></div><!-- 在header之下  -->
+	<div class="page-content back_to_up">		
+		<div class="row row-fluid clearfix mbf">
+			<div class="span3 sidebar">
+				<include file="Sidebar/Ads"/>
+			</div><!-- span3 侧边栏 -->
+			<div class="span9 posts">				
+				<div class="def-block clearfix">
+					<h4> 歌曲下载: <{$m.name}></h4><span class="liner"></span>
+					<h5><p>下载方法：请先登陆会员!!</p>
+						<p>登陆成功后然后选择右键:目标另存为桌面或右键使用讯雷下载.就可以下载mp3舞曲到您的电脑上！<p>
+					</h5>
+				<if condition="is_login()">
+					<script type="text/javascript" src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
+					<script type="text/javascript" src="http://pstatic.xunlei.com/js/base64.js"></script>			
+					<script language="javascript">
+   						var thunder_url = "<{$m.music_down}>";
+    					var thunder_pid = "18835";
+    					var restitle = "<{$m.name}>";
+					</script>
+					<p><span>下载地址1：<a href="<{$m.music_down}>">本地下载(高速通道)</a></span></p>
+					<p><span>下载地址2：<a href="<{$m.music_down}>">电信下载(高速通道)</a></span></p>
+					<p><span>下载地址3：<a href="<{$m.music_down}>">联通下载(高速通道)</a></span></p>
+					<p><span>下载地址4：<script language="javascript">document.write('<a href="#" thunderHref="' + ThunderEncode(thunder_url) + '" thunderPid="' + thunder_pid + '" thunderResTitle="' + restitle + '" onClick="return OnDownloadClick_Simple(this,2,4)" oncontextmenu="ThunderNetwork_SetHref(this)">迅雷专用下载（高速推荐）</a> ');</script></span></p>
+				<else/>
+					<p>你还没有登录请登录！！</p>
+					<div class="grid_2"> 
+						<a class="tbutton small" href="<{:U('Member/login')}>" target="_blank"><span>登录</span></a> 
+					</div>
+					<div class="grid_1"> 
+						<a class="tbutton color4 small" href="<{:U('Member/register')}>" target="_blank"><span>注册</span></a> 
+					</div>
+				</if>
+				</div>
+			</div>		
+		</div>
+	</div><!-- 结束页面内容 --></block>
+<block name="script">	
+</block>

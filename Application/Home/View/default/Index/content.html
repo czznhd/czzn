@@ -1,0 +1,89 @@
+			<div class="row clearfix mbf">
+				<div class="music-player-list"></div>
+			</div><!-- 音乐播放器 -->
+
+			<div class="row clearfix mbf animtt" data-gen="fadeUp" style="opacity:0;">
+				<div class="def-block">
+					<h4>推荐歌手(DJ) </h4><span class="liner"></span>
+					<div class="video-grid clearfix">
+						<div class="mp3-carousel">
+							<div class="anyClass">
+								<ul class="tab-content-items">
+									<Gq:music name="singer" limit="10" order="hits">
+									<li>
+										<a class="m-thumbnail" href="<{$url}>"><img src="<{$singer_pic}>" alt="#"></a>
+										<h3><a href="<{$url}>"><{$name}></a></h3>
+										<span><{$type_name}></span>
+										<span><{$add_time|time_format='Y-m-d'}></span>
+									</li>
+									</Gq:music>
+								</ul>
+							</div><!-- 所有类 -->
+
+							<div class="preve"><i class="icon-angle-left"></i></div><!-- 旋转 左边 -->
+							<div class="nexte"><i class="icon-angle-right"></i></div><!-- 旋转 右边 -->
+
+						</div>
+					</div><!-- mp3s -->
+				</div><!-- 块 -->
+			</div><!-- row mp3s 主页 -->
+			<div class="row row-fluid clearfix mbf ">
+				<div class="span8">
+					<div class="def-block mbt">
+						<ul class="tabs">
+							<Gq:music name="genre" limit="6" order="id">
+								<if condition="$i eq 3 ">
+									<li><a href="#tab-<{$i}>" class="active"> <{$name}> </a></li>   
+									<else /> 
+									<li><a href="#tab-<{$i}>"> <{$name}> </a></li>
+								</if>
+							</Gq:music>
+						</ul><!-- tabs -->
+
+						<ul class="tabs-content">
+						<Gq:music name="genre" limit="6" order="id">
+							<if condition="$i eq 3 ">
+							<li id="tab-<{$i}>" class="active">
+								<else /> 
+							<li id="tab-<{$i}>">
+							</if>
+								<div class="row-fluid the-icons">
+										<Gq:music name="songs"  genre_id="$id" limit="20" order="add_time">
+										<div class="span3"><a href="<{$url}>" target="_play" ><i class="icon-play-circle"></i> <{$name}></a></div>
+										</Gq:music>
+								</div>
+							</li>
+						</Gq:music>
+						</ul><!-- 结束tab标签 -->
+						
+					</div><!-- def block -->
+					
+					<div class="def-block">
+						<h4>最新专辑(CD)</h4><span class="liner"></span>
+						<Gq:music name="album"  limit="6" order="add_time">
+						<div class="news row-fluid animtt" data-gen="fadeUp" style="opacity:0;">
+							<div class="span5 index-new-album">
+								<img class="four-radius" src="<{$album_pic}>" alt="<{$name}>">
+							</div>
+							<div class="span7">
+								<h3 class="news-title"> <a href="<{$url}>"><{$name}></a> </h3>
+								<p><{$introduce||msubstr=0,120}></p>
+								<div class="meta">
+									<span> <i class="icon-time mi"></i>上传时间：<{$add_time|time_format='Y-m-d'}></span> | <span><i class="icon-comments-alt"></i> 点击次数：<{$hits}></span>
+								</div>
+								<a href="<{$url}>" class="sign-btn tbutton small"><span>专辑详细</span></a>
+							</div>
+						</div>
+						</Gq:music>						
+						<div class="tac"><a href="<{:U('Album/index')}>" class="tbutton small"><span>更多专辑</span></a></div>
+					</div><!-- def块 -->
+				</div><!-- span8 news -->
+				<!-- 侧边栏 -->
+				<div class="span4">
+					<include file="Sidebar/newUp"/>	
+					<include file="Sidebar/Ads"/>
+					<include file="Sidebar/topGenre"/>
+					<include file="Sidebar/topHits"/>
+					<include file="Sidebar/topDown"/>
+				</div><!-- span4 侧边栏 -->
+			</div><!-- 行清除浮动  -->

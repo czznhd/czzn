@@ -1,0 +1,62 @@
+<extend name="Public/base"/>
+<block name="content">
+<div class="main-title"><h1><i class="icon-cate-list"></i>音乐(DJ)</h1></div>
+<div class="widget" >
+	<div class="widget-header">
+		<h3>导航列表(<{:count($list)}>)</h3>
+		<div class="buttons">
+			<a href="<{:U('add')}>" class="btn btn-add" title="新增">新增</a>
+			<button url="<{:U('del')}>" class="ajax-post confirm btn btn-post"  target-form="ids" title="删除">删除</button>
+		</div>
+	</div>
+	<div class="widget-content">
+    	<table>
+            <thead>
+              <tr>
+                <th><input type="checkbox" class="check-all"></th>
+                <th>ID</th>
+				<th>导航名称</th>
+				<th>导航地址</th>
+				<th>导航排序</th>
+             	<th>添加时间</th>
+             	<th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            	<notempty name="list">
+            	<volist name="list" id="data" key="k">
+              	<tr>
+                	<td><input type="checkbox" class="ids" value="<{$data.id}>" name="id[]"></td>				
+					<td><{$data.id}></td>
+					<td><{$data.name}></td>
+					<td><{$data.url}></td>
+					<td><{$data.sort}></td>
+                	<td><{$data.add_time|time_format='Y-m-d'}></td>
+                	<td><a title="修改" href="<{:U('mod?id='.$data['id'])}>">修改</a> 
+                		<a title="删除" href="<{:U('del?id='.$data['id'])}>">删除</a>
+                	</td>
+              	</tr>
+              	</volist>
+				<else/>
+				<td colspan="10" class="text-center">暂时还没有内容! </td>
+				</notempty>
+            </tbody>
+        </table>
+       	<div class="fg-toolbar">
+              <div class="bulk-actions align-left"></div>
+              <div class="pagination">
+              	<{$_page}>
+              </div>
+        </div>
+	</div>
+</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+	//导航高亮
+	$('#head-menu').find('a[href="<{:U('Config/index')}>"]').closest('li').addClass('current');
+	$('tbody tr:even').addClass("alt-row"); //隔行换色
+</script>
+</block>	
+
+
